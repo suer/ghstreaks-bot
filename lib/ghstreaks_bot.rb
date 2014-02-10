@@ -8,7 +8,7 @@ module GHStreaksBot
 
   def self.run
     service = GHStreaksBot::Service.new
-    notifications = service.search_notifications
+    notifications = service.search_notifications(Time.now)
     notifications.each do |notification|
       begin
         current_streaks = service.current_streaks(notification['user_name'])

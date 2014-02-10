@@ -5,8 +5,8 @@ module GHStreaksBot
   class GHUserNotFoundError < Exception; end
 
   class Service
-    def search_notifications
-      json = Faraday.get("#{SERVICE_BASEURL}/notifications/search").body
+    def search_notifications(time)
+      json = Faraday.get("#{SERVICE_BASEURL}/notifications/search?hour=#{time.hour}&minute=0").body
       JSON.parse(json)
     end
 
