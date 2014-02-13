@@ -1,4 +1,5 @@
 require 'zero_push'
+require 'active_support/all'
 $: << "."
 require 'ghstreaks_bot/service'
 
@@ -8,7 +9,7 @@ module GHStreaksBot
 
   def self.run
     service = GHStreaksBot::Service.new
-    notifications = service.search_notifications(Time.now)
+    notifications = service.search_notifications(Time.now.utc)
     notifications.each do |notification|
       begin
         current_streaks = service.current_streaks(notification['user_name'])
@@ -21,7 +22,7 @@ module GHStreaksBot
 
   private
   def self.push_notification(notification, badge)
-    return if notification['device_token'].nil? or notification['device_token'] == ''
+    return if notification['device_token'].blank?
 
     ZeroPush.notify({
       device_tokens: [notification['device_token']],
