@@ -1,5 +1,4 @@
 require 'zero_push'
-require 'active_support/all'
 $: << "."
 require 'ghstreaks_bot/service'
 
@@ -22,10 +21,11 @@ module GHStreaksBot
 
   private
   def self.push_notification(notification, badge)
-    return if notification['device_token'].blank?
+    device_token = notification['device_token']
+    return if device_token.nil? or device_token == ''
 
     ZeroPush.notify({
-      device_tokens: [notification['device_token']],
+      device_tokens: [device_token],
       alert: 'Shut the fuck up and write some code!.',
       sound: "default",
       badge: badge
