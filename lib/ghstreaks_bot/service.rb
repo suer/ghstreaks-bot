@@ -22,10 +22,7 @@ module GHStreaksBot
 
     private
     def get_hour_with_timezone(notification)
-      hour = notification['hour'].to_i
-      timezone = notification['timezone']
-      hour_with_timezone = hour - ActiveSupport::TimeZone[timezone].utc_offset / 3600
-      hour_with_timezone % 24
+      (notification['hour']- notification['utc_offset']) % 24
     end
   end
 end
