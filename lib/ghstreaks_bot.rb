@@ -1,10 +1,14 @@
 require 'zero_push'
+require 'logger'
 $: << "."
 require 'ghstreaks_bot/service'
 
 ZeroPush.auth_token = ENV['ZEROPUSH_AUTH_TOKEN']
 
 module GHStreaksBot
+
+  @logger = Logger.new(STDOUT)
+  @logger.level = Logger::INFO
 
   def self.run
     service = GHStreaksBot::Service.new
@@ -14,7 +18,7 @@ module GHStreaksBot
         current_streaks = service.current_streaks(notification['user_name'])
         push_notification(notification, current_streaks)
       rescue GHStreaksBot::GHUserNotFoundError
-        # log
+        @logger.error("User #{notification['user_name']} not found")
       end
     end
   end
@@ -30,6 +34,7 @@ module GHStreaksBot
       sound: "default",
       badge: badge
     })
+    @logger.info("Notification pushed: token #{notification['device_token']}, badge #{badge}")
   end
 
 end
