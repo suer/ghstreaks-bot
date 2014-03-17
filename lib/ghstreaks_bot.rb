@@ -34,7 +34,7 @@ module GHStreaksBot
       sound: "default",
       badge: badge
     })
-    @logger.info("Notification pushed: token #{notification['device_token']}, badge #{badge}")
+    @logger.info("Notification pushed: token #{notification['device_token']}, user_name #{notification['user_name']}, badge #{badge}")
   end
 
 end
