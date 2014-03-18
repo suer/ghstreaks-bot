@@ -30,7 +30,7 @@ module GHStreaksBot
 
     ZeroPush.notify({
       device_tokens: [device_token],
-      alert: 'Shut the fuck up and write some code!.',
+      alert: 'Shut the fxxk up and write some code!.',
       sound: "default",
       badge: badge
     })
