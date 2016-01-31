@@ -13,7 +13,7 @@ Preference
 ----------------------
 
 * environment variables
-  - ZEROPUSH\_AUTH\_TOKEN
+  - APNS\_PEM
 
 How to run
 ----------------------

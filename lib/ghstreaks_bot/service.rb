@@ -1,4 +1,5 @@
 require 'json'
+require 'faraday'
 module GHStreaksBot
   SERVICE_BASEURL = 'https://ghstreaks-service.herokuapp.com'
 
