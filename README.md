@@ -15,6 +15,10 @@ Preference
 * environment variables
   - APNS\_PEM
 
+in heroku,
+
+    heroku config:add APNS_PEM="$(cat /path/to/production.pem)"
+
 How to run
 ----------------------
 

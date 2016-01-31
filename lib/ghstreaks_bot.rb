@@ -31,7 +31,7 @@ module GHStreaksBot
 
     client.push(Houston::Notification.new({
       device: device_token,
-      alert: 'Shut the fxxk up and write some code!.',
+      alert: 'Shut the fxxk up and write some code!',
       sound: 'default',
       badge: badge}))
 
